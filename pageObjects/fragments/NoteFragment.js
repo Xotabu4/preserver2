@@ -3,9 +3,9 @@
 class NoteFragment {
 
     constructor(elem) {
-        this._elem = elem
-        this.titleElement = this._elem.$$('.my-note p').first()
-        this.bodyElement = this._elem.$$('.my-note p').get(1)
+        this.innerElement = elem
+        this.titleElement = this.innerElement.$$('.my-note p').first()
+        this.bodyElement = this.innerElement.$$('.my-note p').get(1)
     }
 
     getTitle() {

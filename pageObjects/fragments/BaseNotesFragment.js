@@ -2,19 +2,20 @@ let NoteFragment = require('./NoteFragment.js').NoteFragment
 
 class BaseNotesFragment {
     constructor() {
-        this._elements = $$('.grid-container .grid-item')
+        this._elems = $$('.grid-container .grid-item');
     }
 
     count() {
-        return new NoteFragment(this._elements.count())
+        return new NoteFragment(this._elems.count())
     }
 
     get(index) {
-        return new NoteFragment(this._elements.get(index))
+        return new NoteFragment(this._elems.get(index))
     }
 
     first() {
-        return new NoteFragment(this._elements.get(0))
+        let first = this._elems.get(0)
+        return new NoteFragment(first)
     }
 
 }

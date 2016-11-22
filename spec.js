@@ -7,7 +7,7 @@ let URL = 'http://www.hiteshbalar.com/preserver/notes'
 describe('Preserver tests', function () {
     beforeEach(function () {
       browser.get(URL)
-      browser.sleep(5000)
+      browser.sleep(8000)
 
     })
 
@@ -36,22 +36,23 @@ describe('Preserver tests', function () {
         })
     })
 
-    xit('should be created when title and body provided', function () {
-        let notesPage = new NotesPage()
+    fit('should be created when title and body provided', function () {
 
+        let notesPage = new NotesPage()
         let title = 'TestTitle'
         let body = 'TestBody'
-        notesPage.createNote(title, body)
-        browser.sleep(2000)
+        notesPage.noteEditor.createNote(title, body)
+        browser.sleep(10000)
 
         //notesPage.navbar.openArchiveNotesPage()
 
         let notesOnPage = notesPage.notes
+        // let firstNote = notesOnPage.first()
 
         expect(notesOnPage.count()).toBe(1,
             'Notes count should be 1 after created')
-        expect(notesOnPage.first().getTitle()).toContain(title)
-        expect(notesOnPage.first().getBody()).toContain(body)
+        // expect(firstNote.getTitle()).toContain(title)
+        // expect(firstNote.getBody()).toContain(body)
     })
 
     it('should be created when only title provided', function () {
