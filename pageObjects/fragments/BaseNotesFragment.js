@@ -6,7 +6,7 @@ class BaseNotesFragment {
     }
 
     count() {
-        return new NoteFragment(this._elems.count())
+        return this._elems.count()
     }
 
     get(index) {
