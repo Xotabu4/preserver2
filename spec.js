@@ -5,13 +5,10 @@ let NotesPage = require('./pageObjects/NotesPage.js').NotesPage
 let URL = 'http://www.hiteshbalar.com/preserver/notes'
 
 describe('Preserver tests', function () {
-    let notesPage = new NotesPage()
-
     beforeEach(function () {
       browser.get(URL)
       browser.sleep(5000)
 
-      browser.params.users[1]
     })
 
     //This function will be executed after each IT block in this DESCRIBE block
@@ -39,11 +36,22 @@ describe('Preserver tests', function () {
         })
     })
 
-    it('should be created when title and body provided', function () {
-        
-        notesPage.createNote('Test', 'Test')
-        expect(notesPage.getNotes().count()).toBe(1,
+    xit('should be created when title and body provided', function () {
+        let notesPage = new NotesPage()
+
+        let title = 'TestTitle'
+        let body = 'TestBody'
+        notesPage.createNote(title, body)
+        browser.sleep(2000)
+
+        //notesPage.navbar.openArchiveNotesPage()
+
+        let notesOnPage = notesPage.notes
+
+        expect(notesOnPage.count()).toBe(1,
             'Notes count should be 1 after created')
+        expect(notesOnPage.first().getTitle()).toContain(title)
+        expect(notesOnPage.first().getBody()).toContain(body)
     })
 
     it('should be created when only title provided', function () {
