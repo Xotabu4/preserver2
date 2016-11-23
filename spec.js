@@ -53,7 +53,7 @@ describe('Preserver tests', function () {
     it('should be created when only title provided', function () {
         let title = 'TestTitle'
         let body = ''
-        notesPage.createNote(title, body)
+        notesPage.noteEditor.createNote(title, body)
 
         let notesOnPage = notesPage.notes
         expect(notesOnPage.count()).toBe(1, 'Notes count should be 1 after created')
@@ -64,7 +64,7 @@ describe('Preserver tests', function () {
     it('should be created when only body provided', function () {
         let title = ''
         let body = 'TestBody'
-        notesPage.createNote(title, body)
+        notesPage.noteEditor.createNote(title, body)
         let notesOnPage = notesPage.notes
         expect(notesOnPage.count()).toBe(1, 'Notes count should be 1 after created')
         expect(notesOnPage.first().getTitle()).toContain(title, `Should have title and body that was used for tests: ${title}/${body}`)
@@ -74,7 +74,7 @@ describe('Preserver tests', function () {
     it('should NOT be created when nothing provided', function () {
         let title = ''
         let body = ''
-        notesPage.createNote(title, body)
+        notesPage.noteEditor.createNote(title, body)
         expect(notesPage.getNotes().count()).toBe(0, 'Notes count should be 0')
     })
 
