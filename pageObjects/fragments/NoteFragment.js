@@ -13,14 +13,14 @@ class NoteFragment {
      * Метод вернет заглавную строку у текущей заметки
      */
     getTitle() {
-        return this.titleElement.getText()
+        return this.titleElement.getText().then(text=> text.trim())
     }
 
     /**
-     * Метод вернет тело у текущей заметки
+     * Метод вернет тело у текущей заметки, без пробелов
      */
     getBody() {
-        return this.bodyElement.getText()
+        return this.bodyElement.getText().then(text=> text.trim())
     }
 
 }

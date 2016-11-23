@@ -10,6 +10,7 @@ describe('Preserver tests', function () {
 
     beforeEach(function () {
       browser.get(URL)
+      browser.sleep(200)
       browser.wait(EC.visibilityOf(notesPage.navbar.navBarElem), 10000, 'Header should be visible after page open')
     })
 
@@ -46,8 +47,8 @@ describe('Preserver tests', function () {
         let notesOnPage = notesPage.notes
 
         expect(notesOnPage.count()).toBe(1, 'Notes count should be 1 after created')
-        expect(notesOnPage.first().getTitle()).toContain(title, `Should have title and body that was used for tests: ${title}/${body}`)
-        expect(notesOnPage.first().getBody()).toContain(body, `Should have title and body that was used for tests: ${title}/${body}`)
+        expect(notesOnPage.first().getTitle()).toBe(title, `Should have title and body that was used for tests: ${title}/${body}`)
+        expect(notesOnPage.first().getBody()).toBe(body, `Should have title and body that was used for tests: ${title}/${body}`)
     })
 
     it('should be created when only title provided', function () {
@@ -57,8 +58,8 @@ describe('Preserver tests', function () {
 
         let notesOnPage = notesPage.notes
         expect(notesOnPage.count()).toBe(1, 'Notes count should be 1 after created')
-        expect(notesOnPage.first().getTitle()).toContain(title, `Should have title and body that was used for tests: ${title}/${body}`)
-        expect(notesOnPage.first().getBody()).toContain(body, `Should have title and body that was used for tests: ${title}/${body}`)
+        expect(notesOnPage.first().getTitle()).toBe(title, `Should have title and body that was used for tests: ${title}/${body}`)
+        expect(notesOnPage.first().getBody()).toBe(body, `Should have title and body that was used for tests: ${title}/${body}`)
     })
 
     it('should be created when only body provided', function () {
@@ -67,15 +68,15 @@ describe('Preserver tests', function () {
         notesPage.noteEditor.createNote(title, body)
         let notesOnPage = notesPage.notes
         expect(notesOnPage.count()).toBe(1, 'Notes count should be 1 after created')
-        expect(notesOnPage.first().getTitle()).toContain(title, `Should have title and body that was used for tests: ${title}/${body}`)
-        expect(notesOnPage.first().getBody()).toContain(body, `Should have title and body that was used for tests: ${title}/${body}`)
+        expect(notesOnPage.first().getTitle()).toBe(title, `Should have title and body that was used for tests: ${title}/${body}`)
+        expect(notesOnPage.first().getBody()).toBe(body, `Should have title and body that was used for tests: ${title}/${body}`)
     })
 
     it('should NOT be created when nothing provided', function () {
         let title = ''
         let body = ''
         notesPage.noteEditor.createNote(title, body)
-        expect(notesPage.getNotes().count()).toBe(0, 'Notes count should be 0')
+        expect(notesPage.notes.count()).toBe(0, 'Notes count should be 0')
     })
 
 })

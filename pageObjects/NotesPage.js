@@ -34,7 +34,7 @@ class NoteEditorFragment {
     }
 
     activate() {
-        this.newNoteBodyField.click()
+        this.noteEditorElement.click()
 
         browser.wait(EC.and(EC.elementToBeClickable(this.newNoteTitleField), EC.elementToBeClickable(this.newNoteBodyField)), 2000, 'Title and Body field should be ready to type after activation')
     }
