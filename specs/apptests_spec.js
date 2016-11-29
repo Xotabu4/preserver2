@@ -2,17 +2,10 @@
 let NotesPage = require('./pageObjects/NotesPage.js').NotesPage
 let EC = protractor.ExpectedConditions
 
-//Просто наш базовый URL для работы
-let URL = 'http://www.hiteshbalar.com/preserver/notes'
-
 describe('Preserver tests', function () {
     let notesPage = new NotesPage()
 
-    beforeEach(function () {
-      browser.get(URL)
-      browser.sleep(200)
-      browser.wait(EC.visibilityOf(notesPage.navbar.navBarElem), 10000, 'Header should be visible after page open')
-    })
+    
 
     //This function will be executed after each IT block in this DESCRIBE block
     afterEach(function () {
